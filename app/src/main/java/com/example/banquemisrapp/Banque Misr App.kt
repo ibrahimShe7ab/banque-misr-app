@@ -1,6 +1,7 @@
 package com.example.banquemisrapp
 
 import android.inputmethodservice.Keyboard
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,12 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
 
 @Composable
 fun BanqueMisrApp(modifier: Modifier = Modifier) {
 
     Column {
-        LogoAndLanguage()
+
         Spacer(Modifier.padding(20.dp))
         UsernamePasswordET()
         Spacer(Modifier.padding(20.dp))

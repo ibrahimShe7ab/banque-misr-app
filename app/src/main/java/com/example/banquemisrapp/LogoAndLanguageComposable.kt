@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,27 +15,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.core.os.LocaleListCompat
 import com.example.banquemisrapp.ui.theme.textColor
 
 @Composable
 fun LogoAndLanguage(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier, onCLick: () -> Unit
 ) {
 
-    val currentLocale =
-        AppCompatDelegate
-            .getApplicationLocales()
-            .get(1)
-            ?.toLanguageTag()
 
-    val language =
-        if (currentLocale == "ar") {
-            "English"
-        } else {
-            "العربية"
-        }
+
 
     Row(
         modifier = modifier
@@ -47,37 +34,25 @@ fun LogoAndLanguage(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val currentLocale =
-            AppCompatDelegate
-                .getApplicationLocales()
-                .get(0)
-                ?.toLanguageTag()
 
-        val newLocale =
-            if (currentLocale == "ar") {
-                "en"
-            } else {
-                "ar"
-            }
         Image(
             painter = painterResource(R.drawable.bm_icon),
             contentDescription = null
         )
 
 
-            Text(
-                text = stringResource(R.string.language),
-                modifier = Modifier.clickable {
+        Text(
+            text = stringResource(R.string.language),
+            fontWeight = FontWeight.Bold,
+            color = textColor,
+            modifier = Modifier.clickable(
 
-                    AppCompatDelegate.setApplicationLocales(
-                        LocaleListCompat.forLanguageTags(newLocale)
-
-                    )
-                },
-                fontWeight = FontWeight.Bold,
-                color = textColor
+                onClick = onCLick
             )
-        }
 
 
+        )
     }
+
+
+}

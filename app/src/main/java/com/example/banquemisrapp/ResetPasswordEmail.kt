@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 fun ResetPasswordEmail(modifier: Modifier = Modifier) {
 
     Text(
-        stringResource(R.string.forgot_username_password),
+       text =  stringResource(R.string.forgot_username_password),
         modifier = Modifier.padding(start = 24.dp),
         fontWeight = FontWeight.SemiBold,
         color = Color.Gray,
