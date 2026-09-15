@@ -4,9 +4,7 @@ plugins {
 }
 
 android {
-    androidResources {
-        generateLocaleConfig = true
-    }
+  
     namespace = "com.example.banquemisrapp"
     compileSdk {
         version = release(37)

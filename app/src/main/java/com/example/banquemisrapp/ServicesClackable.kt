@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 fun Services(
     modifier: Modifier = Modifier,
     img: Painter,
-    contentDC: String = "",
+
     serviceName: String,
  ) {
     Column(
@@ -28,7 +28,7 @@ fun Services(
         verticalArrangement = Arrangement.SpaceBetween
 
     ) {
-        Image(painter = img, contentDescription = contentDC, modifier = Modifier)
+        Image(painter = img, contentDescription = null, modifier = Modifier)
         Spacer(Modifier.padding(10.dp))
         Text(
             text = serviceName,

@@ -1,7 +1,5 @@
 package com.example.banquemisrapp
 
-import android.inputmethodservice.Keyboard
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.core.os.LocaleListCompat
 
 @Composable
 fun BanqueMisrApp(modifier: Modifier = Modifier) {
@@ -28,33 +26,27 @@ fun BanqueMisrApp(modifier: Modifier = Modifier) {
         Spacer(Modifier.padding(20.dp))
         HorizontalDivider(Modifier.padding(horizontal = 26.dp))
         Spacer(Modifier.padding(30.dp))
-
-   Row(
+        Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Services(
                 img = painterResource(R.drawable.our_products),
-                contentDC = "",
-                serviceName = "Our \n product",
-             )
+                serviceName = stringResource(R.string.our_product),
+            )
             Services(
                 img = painterResource(R.drawable.exchange_rate),
-                contentDC = "",
-                serviceName = "Exchange \n rate",
-             )
+                serviceName = stringResource(R.string.exchange_rate),
+            )
             Services(
                 img = painterResource(R.drawable.security_tips),
-                contentDC = "Our",
-                serviceName = "Security \n tips",
-             )
-       Services(
+                serviceName = stringResource(R.string.security_tips),
+            )
+            Services(
                 img = painterResource(R.drawable.nearest_branch_or_atm),
-                contentDC ="",
-                serviceName = "nearest " +
-                        "branch or \nATM",
-             )
-         }
+                serviceName = stringResource(R.string.nearest_branch_or_atm),
+            )
+        }
     }
 }
 
