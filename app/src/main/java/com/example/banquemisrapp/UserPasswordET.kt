@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.TextObfuscationMode
@@ -14,7 +15,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedSecureTextField
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,14 +26,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.banquemisrapp.ui.theme.textColor
 
 @Composable
-fun UsernamePasswordET(
-    modifier: Modifier = Modifier
-) {
+fun UsernamePasswordET() {
 
     val userET = rememberTextFieldState("")
     val password = rememberTextFieldState("")
@@ -41,39 +38,31 @@ fun UsernamePasswordET(
     var passwordVisibility by remember {
         mutableStateOf(false)
     }
-        val isVisible =
-            userET.text.isNotEmpty() &&
-                    password.text.isNotEmpty()
+    val isVisible =
+        userET.text.isNotEmpty() &&
+                password.text.isNotEmpty()
 
 
-        val icon =
-            if (passwordVisibility) {
-                painterResource(R.drawable.visible)
-            } else {
-                painterResource(R.drawable.hide)
-            }
 
-        // Username
-        OutlinedTextField(
-            state = userET,
-            placeholder = {
-                Text(
-                    stringResource(R.string.username)
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email
+    OutlinedTextField(
+        state = userET,
+        placeholder = {
+            Text(
+                stringResource(R.string.username)
             )
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Email
         )
+    )
 
-        Spacer(
-            modifier = Modifier.height(20.dp)
-        )
+    Spacer(
+        modifier = Modifier.height(40.dp)
+    )
 
-        // Password
     OutlinedSecureTextField(
         state = password,
 
@@ -92,25 +81,27 @@ fun UsernamePasswordET(
                 }
         ),
 
-trailingIcon = {
+        trailingIcon = {
 
-    IconButton(
-        onClick = {
-            passwordVisibility = !passwordVisibility
-        }
-    ) {
+            IconButton(
+                onClick = {
+                    passwordVisibility = !passwordVisibility
+                }
+            ) {
 
-        Icon(
-            painter =
-                if (passwordVisibility) {
-                    painterResource(R.drawable.visible)
-                } else {
-                    painterResource(R.drawable.hide)
-                },
+                Icon(
+                    painter =
+                        if (passwordVisibility) {
+                            painterResource(R.drawable.visible)
+                        } else {
+                            painterResource(R.drawable.hide)
+                        },
 
-            contentDescription = null
-        )
-    }},
+                    contentDescription = null,
+                    modifier = Modifier.size(25.dp)
+                )
+            }
+        },
 
         textObfuscationMode =
             if (passwordVisibility) {
@@ -124,45 +115,36 @@ trailingIcon = {
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
     )
-        Spacer(
-            modifier = Modifier.height(10.dp)
+    Spacer(
+        modifier = Modifier.height(25.dp)
+    )
+
+    ResetPasswordEmail()
+
+    Spacer(
+        modifier = Modifier.height(40.dp)
+    )
+
+    Button(
+        onClick = {
+
+        },
+
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp)
+            .padding(horizontal = 18.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = textColor,
+            disabledContentColor = Color.Gray
+        ),
+        enabled = isVisible,
+        shape = RoundedCornerShape(16.dp)
+    ) {
+
+        Text(
+            text = stringResource(R.string.login)
         )
-
-        ResetPasswordEmail()
-
-        Spacer(
-            modifier = Modifier.height(10.dp)
-        )
-
-        Button(
-            onClick = {
-
-            },
-
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(80.dp)
-                .padding(horizontal = 18.dp),
-
-            colors = ButtonDefaults.buttonColors(
-                containerColor = textColor,
-                disabledContentColor = Color.Gray
-            ),
-
-            enabled = isVisible,
-
-            shape = RoundedCornerShape(16.dp)
-        ) {
-
-            Text(
-                text = stringResource(R.string.login)
-            )
-        }
     }
-
-@Preview
-@Composable
-private fun c() {
-    UsernamePasswordET()
-
 }
+

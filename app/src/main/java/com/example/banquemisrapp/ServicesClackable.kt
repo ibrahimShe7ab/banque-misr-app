@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,21 +19,22 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Services(
-    modifier: Modifier = Modifier,
-    img: Painter,
+     img: Painter,
 
     serviceName: String,
  ) {
     Column(
+         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier.padding(horizontal = 10.dp)
+
 
     ) {
-        Image(painter = img, contentDescription = null, modifier = Modifier)
+        Image(painter = img, contentDescription = null, modifier = Modifier.size(80.dp))
         Spacer(Modifier.padding(10.dp))
         Text(
             text = serviceName,
-            modifier = Modifier,
+            modifier = Modifier.size(80.dp),
 
             fontWeight = FontWeight.SemiBold,
             color = Color.Gray

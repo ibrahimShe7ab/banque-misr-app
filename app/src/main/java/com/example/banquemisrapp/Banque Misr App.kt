@@ -18,12 +18,11 @@ fun BanqueMisrApp(modifier: Modifier = Modifier) {
 
     Column {
 
-        Spacer(Modifier.padding(20.dp))
+        Spacer(Modifier.padding(30.dp))
         UsernamePasswordET()
         Spacer(Modifier.padding(20.dp))
+         HelpSection()
         Spacer(Modifier.padding(10.dp))
-        HelpSection()
-        Spacer(Modifier.padding(20.dp))
         HorizontalDivider(Modifier.padding(horizontal = 26.dp))
         Spacer(Modifier.padding(30.dp))
         Row(
